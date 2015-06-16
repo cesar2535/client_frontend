@@ -59,8 +59,8 @@ var BroadcastRoute = React.createClass({
     // var o = this.state;
     // console.log(o);
     var streamingId = this.props.streamingId;
-    var videoSrc = 'rtmp://192.168.0.108:1935/rtmp/video_' + streamingId;
-    var webcamSrc = 'rtmp://192.168.0.108:1935/rtmp/webcam_' + streamingId;
+    var videoSrc = 'rtmp://52.68.35.58:80/live/video_' + streamingId;
+    var webcamSrc = 'rtmp://52.68.35.58:80/live/webcam_' + streamingId;
 
     return (
       <div className="wrapper">
