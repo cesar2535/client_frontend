@@ -13,7 +13,7 @@ var Webcam = require('./WebcamPlayer/Webcam.jsx');
 var BroadcastRoute = React.createClass({
 
   propType: {
-
+    streamingId: React.PropTypes.string.isRequired
   },
   getInitialState: function () {
     return this.getTruth();
@@ -31,7 +31,7 @@ var BroadcastRoute = React.createClass({
   // 元件將從畫面上移除時，要做善後工作
   componentWillUnmount: function() {
     // VideoStore.removeListener( AppConstants.CHANGE_EVENT, this._onChange );
-    actions.stopBroadcast();
+    // actions.stopBroadcast();
   },
 
   componentDidUnmount: function() {
@@ -59,8 +59,8 @@ var BroadcastRoute = React.createClass({
     // var o = this.state;
     // console.log(o);
     var streamingId = this.props.streamingId;
-    var videoSrc = 'http://192.168.0.108/rtmp/video_' + streamingId;
-    var webcamSrc = 'http://192.168.0.108/rtmp/webcam_' + streamingId;
+    var videoSrc = 'rtmp://192.168.0.108:1935/rtmp/video_' + streamingId;
+    var webcamSrc = 'rtmp://192.168.0.108:1935/rtmp/webcam_' + streamingId;
 
     return (
       <div className="wrapper">
@@ -74,7 +74,7 @@ var BroadcastRoute = React.createClass({
           </section>
           <aside>
             <Webcam src={webcamSrc} />
-            <MessageBox />
+            <MessageBox streamingId={streamingId}/>
           </aside>
         </div>
       </div>

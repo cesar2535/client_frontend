@@ -26,8 +26,9 @@ $(function(){
   //   React.render( <BrowserRoute />, document.getElementById('container') );
   //   console.log(ctx);
   // });
-  page('/broadcast/:id', function (ctx, next) {
-    React.render( <BroadcastRoute />, document.getElementById('container') );
+  page('/streaming/:id', function (ctx, next) {
+    var streamingId = ctx.params.id;
+    React.render( <BroadcastRoute streamingId={streamingId} />, document.getElementById('container') );
     console.log(ctx);
   });
   page('*', function () {

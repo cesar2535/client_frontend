@@ -7,8 +7,8 @@ var Webcam = React.createClass({
     this.jwplayer = jwplayer('webcam').setup({
       file: this.props.src,
       width: "100%",
-      autostart: true,
-      aspectratio: "16:9"
+      height: "100%",
+      autostart: true
     });
 
   },

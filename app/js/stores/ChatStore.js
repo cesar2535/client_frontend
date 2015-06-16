@@ -36,6 +36,9 @@ ChatStore.dispatchToken = AppDispatcher.register(function eventHandlers(event) {
       arrMessages.length = 0;
       // ChatStore.emit(AppConstants.CHANGE_EVENT);
       break;
+    case AppConstants.MESSAGE_SEND:
+      ioNsp.emit("message", action.item);
+      break;
     case AppConstants.MESSAGE_ADD:
       arrMessages.push(action.item);
       // console.log(arrMessages);

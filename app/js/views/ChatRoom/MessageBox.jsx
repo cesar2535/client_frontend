@@ -7,7 +7,7 @@ var MessageInput = require('./MessageInput.jsx');
 var MessageBox = React.createClass({
   displayName: 'MessageBox',
   propTypes: {
-
+    streamingId: React.PropTypes.string.isRequired
   },
   getInitialState: function () {
     return this.getTruth();
@@ -15,7 +15,7 @@ var MessageBox = React.createClass({
   componentWillMount: function () {
     // console.info('MessageBox will mount');
     var channel = {
-      name: 'test'
+      name: this.props.streamingId
     };
     ChatStore.addListener( AppConstants.CHANGE_EVENT, this._onChange );
     actions.createChannel(channel);
@@ -34,7 +34,7 @@ var MessageBox = React.createClass({
   componentWillUnmount: function () {
     console.log('componentWillUnmount');
     var channel = {
-      name: 'test'
+      name: this.props.streamingId
     };
     actions.destroyChannel(channel);
   },
