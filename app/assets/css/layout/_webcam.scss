@@ -1,0 +1,10 @@
+.webcam {
+  @include display-flex;
+  @include justify-content(center);
+  @include align-items(center);
+  background-color: #d0d0d0;
+  width: 100%;
+  height: 30vh;
+  overflow-y: auto;
+}
+@include scrollbars(1px, slategray);

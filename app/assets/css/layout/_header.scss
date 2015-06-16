@@ -1,0 +1,19 @@
+header {
+  @include display-flex;
+  background-color: #00e390;
+  height: 10vh;
+  nav {
+    width: 100vw;
+    height: 100%;
+    ul {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      @include display-flex;
+      @include align-items(center);
+      li > a {
+        padding: 20px;
+      }
+    }
+  }
+}

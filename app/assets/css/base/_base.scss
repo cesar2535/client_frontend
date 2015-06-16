@@ -1,0 +1,50 @@
+/* ===========================
+ * Base
+ * =========================== */
+
+body {
+  font-family: $font1;
+  font-weight: 300;
+  font-size: 1.5em;
+  line-height: 1.5;
+  @include background-size(cover);
+}
+
+a {
+  color: $color-link;
+  text-decoration: none;
+  @include transition;
+  &:hover {
+    color: $color-link-hover;
+  }
+}
+
+::-moz-selection {
+  background: $color1;
+  color: white;
+  text-shadow: none;
+}
+
+::selection {
+  background: $color1;
+  color: white;
+  text-shadow: none;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  outline: none;
+  border: none;
+}
