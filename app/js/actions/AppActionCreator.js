@@ -3,7 +3,7 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var AppConstants = require('../constants/AppConstants');
 var shortid = require('shortid');
 var chatroomUrl = 'http://ec2-52-69-53-3.ap-northeast-1.compute.amazonaws.com:8080';
-var nasUrl = 'http://localhost:8081';
+// var nasUrl = 'http://localhost:8081';
 /**
  * 這是一個 singleton 物件
  */
