@@ -22,10 +22,10 @@ var MainApp = require('./views/MainApp.jsx');
 $(function(){
   // React.render( <MainApp />, document.getElementById('container') );
   page.base('');
-  // page('/', function (ctx, next) {
-  //   React.render( <BrowserRoute />, document.getElementById('container') );
-  //   console.log(ctx);
-  // });
+  page('/', function (ctx, next) {
+    // React.render( <BrowserRoute />, document.getElementById('container') );
+    console.log(ctx);
+  });
   page('/streaming/:id', function (ctx, next) {
     var streamingId = ctx.params.id;
     React.render( <BroadcastRoute streamingId={streamingId} />, document.getElementById('container') );
