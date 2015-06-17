@@ -8,7 +8,6 @@ var Header = React.createClass({
       <header>
         <nav>
           <ul>
-            <li><a>Home</a></li>
           </ul>
         </nav>
       </header>
