@@ -3,6 +3,7 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var AppConstants = require('../constants/AppConstants');
 var shortid = require('shortid');
 var chatroomUrl = 'http://ec2-52-69-53-3.ap-northeast-1.compute.amazonaws.com:8080';
+var serverUrl = '';
 // var nasUrl = 'http://localhost:8081';
 /**
  * 這是一個 singleton 物件
@@ -18,6 +19,34 @@ var AppActionCreators = {
     //     actionType: AppConstants.TODO_READ,
     //     items: [] // 送一包假資料進去
     // });
+  },
+  setPageNotFound: function () {
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.PAGE_NOT_FOUND
+    });
+  },
+  getStreamingData: function (id) {
+    var that = this;
+    fetch( serverUrl + '/streaming/rooms/' + id, {
+      method: 'get'
+    }).then(function(res) {
+      res.json().then(function (body) {
+        console.log(body.data);
+        that.loadStreamingData(body.data);
+        return body.data;
+      }).then(function (data) {
+        AppDispatcher.handleViewAction({
+          actionType: AppConstants.STREAMING_LOAD_VIEW,
+          item: data
+        });
+      })
+    });
+  },
+  loadStreamingData: function (streamingData) {
+    AppDispatcher.handleServerAction({
+      actionType: AppConstants.STREAMING_LOAD,
+      item: streamingData
+    });
   },
   createChannel: function (item) {
     fetch( chatroomUrl + '/channel/create', {

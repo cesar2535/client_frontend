@@ -84,7 +84,7 @@ var BroadcastRoute = React.createClass({
     return this.getTruth();
   },
   getTruth: function () {
-    return VideoStore.getRTMP();
+    return VideoStore.getStreamingInfo();
   }
 
 });

@@ -1,6 +1,8 @@
 // 這是 root view，也稱為 controller-view
 
 // var Container = require('./Container.jsx');
+var RouteStore = require('../stores/RouteStore');
+var AppConstants = require('../constants/AppConstants');
 var Header = require('./Header/Header.jsx');
 var VideoPlayer = require('./VideoPlayer/VideoPlayer.jsx');
 var MessageBox = require('./ChatRoom/MessageBox.jsx');
@@ -10,12 +12,10 @@ var MainApp = React.createClass({
 
   //
   getInitialState: function () {
-    return {
-      currentView: ""
-    };
+    return this.getTruth();
   },
   componentWillMount: function() {
-    
+    RouteStore.addListener( AppConstants.CHANGE_EVENT, this._onChange );
   },
 
   //
@@ -25,7 +25,7 @@ var MainApp = React.createClass({
 
   // 元件將從畫面上移除時，要做善後工作
   componentWillUnmount: function() {
-    ChatStore.removeChangeListener( this._onChange );
+    RouteStore.removeListener( AppConstants.CHANGE_EVENT, this._onChange );
   },
 
   componentDidUnmount: function() {
@@ -50,22 +50,6 @@ var MainApp = React.createClass({
 
   //
   render: function() {
-    // return (
-    //   <div className="wrapper">
-    //     <Header />
-    //     <div id="main">
-    //       <section>
-    //         <div className="title">
-    //           <h1>Title</h1>
-    //         </div>
-    //         <VideoPlayer src="/assets/images/test.mp4" />
-    //       </section>
-    //       <aside>
-    //         <MessageBox />
-    //       </aside>
-    //     </div>
-    //   </div>
-    // );
     return (
       <div className="wrapper">
         <Header />
@@ -74,6 +58,14 @@ var MainApp = React.createClass({
     );
   },
 
+  _onChange: function () {
+    return this.setState( this.getTruth() );
+  },
+  getTruth: function () {
+    return {
+      currentView: RouteStore.getCurrentView()
+    };
+  }
 
 });
 

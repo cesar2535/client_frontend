@@ -19,9 +19,13 @@ module.exports = keyMirror({
 
   CHANGE_EVENT: null,
   
-  FILES_LOAD: null,
-  FILE_SELECT: null,
-  VIDEO_BROADCAST: null,
+  // FILES_LOAD: null,
+  // FILE_SELECT: null,
+  // VIDEO_BROADCAST: null,
+  STREAMING_LOAD: null,
+
+  PAGE_NOT_FOUND: null,
+  STREAMING_LOAD_VIEW: null,
 
   CHANNEL_CREATE: null,
   CHANNEL_DESTROY: null,

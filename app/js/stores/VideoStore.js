@@ -14,7 +14,7 @@ var rtmpInfo = {};
 var VideoStore = {};
 
 Object.assign( VideoStore, EventEmitter.prototype, {
-  getRTMP: function () {
+  getStreamingInfo: function () {
     console.log(rtmpInfo);
     return rtmpInfo;
   },
@@ -31,26 +31,12 @@ Object.assign( VideoStore, EventEmitter.prototype, {
 VideoStore.dispatchToken = AppDispatcher.register( function videoEventHandler(event) {
   var action = event.action;
   switch (action.actionType) {
-    case AppConstants.FILES_LOAD:
-      console.info('VideoStore: FILES_LOAD');
-      console.log(action.items);
-      arrVideos = action.items;
-      VideoStore.emit(AppConstants.CHANGE_EVENT);
-      break;
-    case AppConstants.FILE_SELECT:
-      console.info('VideoStore: FILE_SELECT', action.item.fileName);
-      console.log(action.item);
-      if (selectedItem != action.item) {
-        selectedItem = action.item;
-        VideoStore.emit( AppConstants.CHANGE_EVENT );
-      }
-      break;
-    case AppConstants.VIDEO_BROADCAST:
-      console.info('VideoStore: VIDEO_BROADCAST');
+    case AppConstants.STREAMING_LOAD:
+      console.info('VideoStore: STREAMING_LOAD');
       console.log(action.item);
       rtmpInfo = action.item;
-      page('/broadcast/' + rtmpInfo.streaming_id);
-      // VideoStore.emit( AppConstants.CHANGE_EVENT );
+      break;
+    default:
       break;
   }
 });
