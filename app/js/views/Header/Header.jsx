@@ -8,6 +8,8 @@ var Header = React.createClass({
       <header>
         <nav>
           <ul>
+            <li><a href="./">Home</a></li>
+            <li><a href="./streaming/asdsadsa">Streaming</a></li>
           </ul>
         </nav>
       </header>

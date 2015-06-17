@@ -7,6 +7,7 @@ var Header = require('./Header/Header.jsx');
 var VideoPlayer = require('./VideoPlayer/VideoPlayer.jsx');
 var MessageBox = require('./ChatRoom/MessageBox.jsx');
 var VideosBrowser = require('./VideosBrowser/VideosBrowser.jsx');
+var Webcam = require('./WebcamPlayer/Webcam.jsx');
 //
 var MainApp = React.createClass({
 
@@ -37,8 +38,6 @@ var MainApp = React.createClass({
   },
 
   //
-  shouldComponentUpdate: function(nextProps, nextState) {
-  },
 
   // 這時已不可用 setState()
   componentWillUpdate: function(nextProps, nextState) {
@@ -50,10 +49,35 @@ var MainApp = React.createClass({
 
   //
   render: function() {
+    var view;
+    var streamingId = 'assdasdasd';
+    var videoSrc = 'rtmp://52.68.35.58:80/live/video_' + streamingId;
+    var webcamSrc = 'rtmp://52.68.35.58:80/live/webcam_' + streamingId;
+    console.log(this.state);
+    if (this.state.currentView == 'pageNotFound') {
+      view = (
+        <div><h1>Page Not Found</h1></div>
+      );
+    } else if (this.state.currentView == 'streamingRoom') {
+      view = (
+        <div id="main">
+          <section>
+            <div className="title">
+              <h1>Title</h1>
+            </div>
+            <VideoPlayer src={videoSrc} />
+          </section>
+          <aside>
+            <Webcam src={webcamSrc} />
+            <MessageBox streamingId={streamingId}/>
+          </aside>
+        </div>
+      );
+    }
     return (
       <div className="wrapper">
         <Header />
-        <VideosBrowser />
+        {view}
       </div>
     );
   },

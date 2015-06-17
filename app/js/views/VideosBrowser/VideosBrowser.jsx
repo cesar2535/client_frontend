@@ -16,7 +16,7 @@ var VideosBrowser = React.createClass({
     VideoStore.addListener( AppConstants.CHANGE_EVENT, this._onChange );
   },
   componentDidMount: function () {
-    actions.loadFiles();
+    // actions.loadFiles();
   },
   render: function () {
     var video = {

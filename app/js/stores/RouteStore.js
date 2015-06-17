@@ -10,7 +10,7 @@ var currentView;
 Object.assign(RouteStore, EventEmitter.prototype, {
   streamingWatch: function (ctx, next) {
     var id = ctx.params.id;
-    return actions.getStreamingData(id);
+    actions.getStreamingData(id);
   },
   pageNotFound: function (ctx, next) {
     actions.setPageNotFound();

@@ -27,7 +27,7 @@ var AppActionCreators = {
   },
   getStreamingData: function (id) {
     var that = this;
-    fetch( serverUrl + '/streaming/rooms/' + id, {
+    fetch( serverUrl, {
       method: 'get'
     }).then(function(res) {
       res.json().then(function (body) {

@@ -20,22 +20,22 @@ var BroadcastRoute = require('./views/BroadcastRoute.jsx');
 var MainApp = require('./views/MainApp.jsx');
 
 $(function(){
-  // React.render( <MainApp />, document.getElementById('container') );
-  page.base('/#!');
-  page('/', function (ctx, next) {
-    // React.render( <BrowserRoute />, document.getElementById('container') );
-    console.log(ctx);
-  });
-  page('/streaming/:id', function (ctx, next) {
-    var streamingId = ctx.params.id;
-    React.render( <BroadcastRoute streamingId={streamingId} />, document.getElementById('container') );
-    console.log(ctx);
-  });
-  page('*', function () {
-    React.render( <div><h1>{"Page Not Found :-("}</h1></div>, document.getElementById('container') );
-    console.error('Page Not Found :-(');
-  });
-  page({
-    hashbang: true
-  });
+  React.render( <MainApp />, document.getElementById('container') );
+  // page.base('/#!');
+  // page('/', function (ctx, next) {
+  //   // React.render( <BrowserRoute />, document.getElementById('container') );
+  //   console.log(ctx);
+  // });
+  // page('/streaming/:id', function (ctx, next) {
+  //   var streamingId = ctx.params.id;
+  //   React.render( <BroadcastRoute streamingId={streamingId} />, document.getElementById('container') );
+  //   console.log(ctx);
+  // });
+  // page('*', function () {
+  //   React.render( <div><h1>{"Page Not Found :-("}</h1></div>, document.getElementById('container') );
+  //   console.error('Page Not Found :-(');
+  // });
+  // page({
+  //   hashbang: true
+  // });
 })
