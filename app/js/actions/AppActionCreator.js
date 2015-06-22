@@ -27,20 +27,20 @@ var AppActionCreators = {
   },
   getStreamingData: function (id) {
     var that = this;
-    fetch( serverUrl, {
-      method: 'get'
-    }).then(function(res) {
-      res.json().then(function (body) {
-        console.log(body.data);
-        that.loadStreamingData(body.data);
-        return body.data;
-      }).then(function (data) {
+    // fetch( serverUrl, {
+    //   method: 'get'
+    // }).then(function(res) {
+    //   res.json().then(function (body) {
+    //     console.log(body.data);
+        that.loadStreamingData('test');
+      //   return body.data;
+      // }).then(function (data) {
         AppDispatcher.handleViewAction({
           actionType: AppConstants.STREAMING_LOAD_VIEW,
-          item: data
+          item: 'test'
         });
-      })
-    });
+    //   })
+    // });
   },
   loadStreamingData: function (streamingData) {
     AppDispatcher.handleServerAction({
