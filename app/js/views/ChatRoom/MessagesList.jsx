@@ -1,3 +1,5 @@
+var MessageItem = require('./MessageItem.jsx');
+
 var MessagesList = React.createClass({
   displayName: 'MessagesList',
   propTypes: {
@@ -10,12 +12,7 @@ var MessagesList = React.createClass({
   render: function () {
     var arrMessages = this.props.arrMessages;
     var messages = arrMessages.map(function (item) {
-      return (
-        <li className="message-item" key={item.uid}>
-          <span className="username">{item.username + ': '}</span>
-          <span className="content">{item.content}</span>
-        </li>
-      );
+      return <MessageItem key={item.uid} item={item} />;
     });
     return (
       <ul className='messages-list'>
