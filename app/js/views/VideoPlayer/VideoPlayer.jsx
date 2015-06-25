@@ -17,7 +17,7 @@ var VideoPlayer = React.createClass({
   componentDidMount: function () {
     console.info('VideoPlayer Did Mount');
     console.log(this.props);
-    this.jwplayer = jwplayer('video').setup({
+    this.jwplayer = jwplayer(this.props.id).setup({
       file: this.props.src,
       width: "100%",
       autostart: true,
@@ -33,8 +33,8 @@ var VideoPlayer = React.createClass({
   },
   render: function () {
     return (
-      <div className="video-player">
-        <div id="video"></div>
+      <div className={ this.props.id + "-player" }>
+        <div id={this.props.id}></div>
         
       </div>
     );

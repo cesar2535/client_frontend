@@ -56,7 +56,7 @@ var MainApp = React.createClass({
     console.log(this.state);
     if (this.state.currentView == 'pageNotFound') {
       view = (
-        <div><h1>Page Not Found</h1></div>
+        <div><h1>Page Not Found :-(</h1></div>
       );
     } else if (this.state.currentView == 'streamingRoom') {
       view = (
@@ -65,10 +65,10 @@ var MainApp = React.createClass({
             <div className="title">
               <h1>Title</h1>
             </div>
-            <VideoPlayer src={videoSrc} />
+            <VideoPlayer id="video" src={videoSrc} />
           </section>
           <aside>
-            <Webcam src={webcamSrc} />
+            <VideoPlayer id="webcam" src={webcamSrc} />
             <MessageBox streamingId={streamingId}/>
           </aside>
         </div>
