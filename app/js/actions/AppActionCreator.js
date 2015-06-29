@@ -48,6 +48,20 @@ var AppActionCreators = {
       item: streamingData
     });
   },
+  connectChat: function (item) {
+    // Connect the existing chat channel
+    AppDispatcher.handleServerAction({
+      actionType: AppConstants.CHANNEL_CONNECT,
+      item: item
+    });
+  },
+  disconnectChat: function (item) {
+    // Disconnect the chat
+    AppDispatcher.handleServerAction({
+      actionType: AppConstants.CHANNEL_DISCONNECT,
+      item: item
+    });
+  },
   createChannel: function (item) {
     fetch( chatroomUrl + '/channel/create', {
       method: 'post',
@@ -60,7 +74,7 @@ var AppActionCreators = {
       console.info('Action: Create Channel');
       console.log(res);
       AppDispatcher.handleServerAction({
-        actionType: AppConstants.CHANNEL_CREATE,
+        actionType: AppConstants.CHANNEL_CONNECT,
         item: item
       });
     });
@@ -77,7 +91,7 @@ var AppActionCreators = {
       console.info('Action: Destroy Channel');
       console.log(res);
       AppDispatcher.handleServerAction({
-        actionType: AppConstants.CHANNEL_DESTROY,
+        actionType: AppConstants.CHANNEL_DISCONNECT,
         item: item
       });
     });

@@ -22,7 +22,7 @@ Object.assign(ChatStore, EventEmitter.prototype, {
 ChatStore.dispatchToken = AppDispatcher.register(function eventHandlers(event) {
   var action = event.action;
   switch (action.actionType) {
-    case AppConstants.CHANNEL_CREATE:
+    case AppConstants.CHANNEL_CONNECT:
       console.log(action.item);
       ioNsp = io(chatroomUrl + '/' + action.item.name);
       ioNsp.connect();
@@ -32,7 +32,8 @@ ChatStore.dispatchToken = AppDispatcher.register(function eventHandlers(event) {
         ChatStore.emit(AppConstants.CHANGE_EVENT);
       });
       break;
-    case AppConstants.CHANNEL_DESTROY:
+    case AppConstants.CHANNEL_DISCONNECT:
+      ioNsp.disconnect();
       arrMessages.length = 0;
       // ChatStore.emit(AppConstants.CHANGE_EVENT);
       break;

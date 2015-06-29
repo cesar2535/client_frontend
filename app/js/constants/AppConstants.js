@@ -27,8 +27,8 @@ module.exports = keyMirror({
   PAGE_NOT_FOUND: null,
   STREAMING_LOAD_VIEW: null,
 
-  CHANNEL_CREATE: null,
-  CHANNEL_DESTROY: null,
+  CHANNEL_CONNECT: null,
+  CHANNEL_DISCONNECT: null,
   MESSAGE_ADD: null,
 
   noop: null

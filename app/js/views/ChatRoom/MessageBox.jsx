@@ -18,7 +18,7 @@ var MessageBox = React.createClass({
       name: this.props.streamingId
     };
     ChatStore.addListener( AppConstants.CHANGE_EVENT, this._onChange );
-    actions.createChannel(channel);
+    actions.connectChat(channel);
     // this.ioNsp = io('http://ec2-52-69-53-3.ap-northeast-1.compute.amazonaws.com:8080/' + channel.name);
   },
   componentDidMount: function () {
@@ -36,7 +36,7 @@ var MessageBox = React.createClass({
     var channel = {
       name: this.props.streamingId
     };
-    actions.destroyChannel(channel);
+    actions.disconnectChat(channel);
   },
   render: function () {
     var o = this.state;
