@@ -56,7 +56,9 @@ var MainApp = React.createClass({
     console.log(this.state);
     if (this.state.currentView == 'pageNotFound') {
       view = (
-        <div><h1>Page Not Found :-(</h1></div>
+        <div id="main">
+          <h1>Page Not Found :-(</h1>
+        </div>
       );
     } else if (this.state.currentView == 'streamingRoom') {
       view = (
